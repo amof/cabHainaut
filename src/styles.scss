@@ -1,1 +1,111 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$cabhainautMain: (
+    50 : #ede0e8,
+    100 : #d3b3c5,
+    200 : #b5809f,
+    300 : #974d79,
+    400 : #81265c,
+    500 : #6b003f,
+    600 : #630039,
+    700 : #580031,
+    800 : #4e0029,
+    900 : #3c001b,
+    A100 : #ff72a2,
+    A200 : #ff3f80,
+    A400 : #ff0c5f,
+    A700 : #f10052,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$cabhainautAccent: (
+    50 : #e0ede6,
+    100 : #b3d3c0,
+    200 : #80b596,
+    300 : #4d976c,
+    400 : #26814d,
+    500 : #006b2d,
+    600 : #006328,
+    700 : #005822,
+    800 : #004e1c,
+    900 : #003c11,
+    A100 : #72ff88,
+    A200 : #3fff5d,
+    A400 : #0cff33,
+    A700 : #00f126,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$cabHainautWebsite-primary: mat-palette($cabhainautMain);
+$cabHainautWebsite-accent: mat-palette($cabhainautAccent, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$cabHainautWebsite-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$cabHainautWebsite-theme: mat-light-theme((
+  color: (
+    primary: $cabHainautWebsite-primary,
+    accent: $cabHainautWebsite-accent,
+    warn: $cabHainautWebsite-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($cabHainautWebsite-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
