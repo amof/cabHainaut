@@ -1,4 +1,4 @@
-<div fxLayout="Column">
+<div class="mainApp">
   <mat-toolbar color=primary fxLayoutAlign="space-between center">
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
@@ -22,7 +22,7 @@
     <button mat-menu-item routerLink="/landelies"><fa-icon icon="mountain" size="lg"></fa-icon> Landelies</button>
     <button mat-menu-item routerLink=""><fa-icon icon="newspaper" size="lg"></fa-icon> Rock&Glace</button>
     <button mat-menu-item routerLink=""><fa-icon icon="images" size="lg"></fa-icon> Photos</button>
-    <button mat-menu-item routerLink=""><fa-icon icon="hands-helping" size="lg"></fa-icon> Cab Hainaut</button>
+    <button mat-menu-item routerLink="/team"><fa-icon icon="hands-helping" size="lg"></fa-icon> Cab Hainaut</button>
   </mat-menu>
   <div>
     <router-outlet></router-outlet>

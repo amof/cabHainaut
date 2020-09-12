@@ -23,6 +23,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs'; 
 
 // Carousel
 import { IvyCarouselModule } from 'angular-responsive-carousel';
@@ -35,6 +36,7 @@ import { HomeComponent } from './core/home/home.component';
 import { LandeliesComponent } from './core/landelies/landelies.component';
 import { AgendaComponent } from './core/agenda/agenda.component';
 import { AgendaDetailComponent } from './core/agenda-detail/agenda-detail.component';
+import { TeamComponent } from './core/team/team.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { AgendaDetailComponent } from './core/agenda-detail/agenda-detail.compon
     LandeliesComponent,
     AgendaComponent,
     AgendaDetailComponent,
+    TeamComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { AgendaDetailComponent } from './core/agenda-detail/agenda-detail.compon
     MatCardModule,
     IvyCarouselModule,
     FontAwesomeModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
