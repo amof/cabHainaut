@@ -12,4 +12,8 @@ p {
 
 mat-card {
   margin: 0.3rem;
+  mat-card-avatar {
+    height: 0;
+    width: 0;
+  }
 }

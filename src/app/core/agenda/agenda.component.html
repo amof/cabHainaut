@@ -1,5 +1,5 @@
 <div class="container">
-  <div fxFlex *ngIf="events">
+  <div *ngIf="events">
     <mat-card *ngFor="let event of events">
       <mat-card-header>
         <mat-card-title>{{event.title}}</mat-card-title>
