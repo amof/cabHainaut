@@ -7,6 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+
+// Font Awesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // Carousel
 import { IvyCarouselModule } from 'angular-responsive-carousel';
@@ -40,6 +48,7 @@ import { AgendaDetailComponent } from './core/agenda-detail/agenda-detail.compon
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
     FlexLayoutModule,
     HttpClientModule,
     MatToolbarModule,
@@ -50,7 +59,9 @@ import { AgendaDetailComponent } from './core/agenda-detail/agenda-detail.compon
     MatExpansionModule,
     LeafletModule,
     MatCardModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    FontAwesomeModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

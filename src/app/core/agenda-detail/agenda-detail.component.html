@@ -1,73 +1,81 @@
 <div class="container">
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <h1> Stage d'automne </h1>
+  <div fxFlex *ngIf="event">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <h1> {{event.title}} </h1>
+    </div>
+  
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <img mat-card-image fxFlex=80%  src="{{event.img}}" alt="Agenda Image">
+    </div>
+  
+    <mat-card *ngIf="event.description">
+      <mat-card-header fxLayoutAlign="space-between">
+        <mat-card-title>Description</mat-card-title>
+        <mat-icon>description</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{event.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card *ngIf="event.where">
+      <mat-card-header fxLayoutAlign="space-between">
+        <mat-card-title>Où ?</mat-card-title>
+        <mat-icon>map</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{event.where}}</p>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card *ngIf="event.when">
+      <mat-card-header fxLayoutAlign="space-between">
+        <mat-card-title>Quand ?</mat-card-title>
+        <mat-icon>calendar_today</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{event.when}}</p>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card *ngIf="event.which">
+      <mat-card-header fxLayoutAlign="space-between">
+        <mat-card-title>Pour qui ?</mat-card-title>
+        <mat-icon>account_circle</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{event.which}}</p>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card *ngIf="event.register">
+      <mat-card-header fxLayoutAlign="space-between">
+        <mat-card-title>Comment s'inscrire ?</mat-card-title>
+        <mat-icon>how_to_reg</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{event.register}}</p>
+        <p *ngIf="event.register_phone" fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>call</mat-icon><a href="tel:{{event.register_phone}}">{{event.register_phone}}</a></p>
+        <p *ngIf="event.register_mail" fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>email</mat-icon><a href="mailto:{{event.register_mail}}">{{event.register_mail}}</a></p>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card *ngIf="event.price">
+      <mat-card-header fxLayoutAlign="space-between">
+        <mat-card-title>Prix & Payement ?</mat-card-title>
+        <mat-icon>attach_money</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{event.price}}</p>
+      </mat-card-content>
+    </mat-card>
   </div>
-
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <img mat-card-image fxFlex=80%  src="assets/img/stage_autonomie.jpg" alt="Free image">
+  <div [hidden]="event || errMess">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
-
-  <mat-card>
-    <mat-card-header fxLayoutAlign="space-between">
-      <mat-card-title>Description</mat-card-title>
-      <mat-icon>description</mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Escalade – Stage d’initiation à la falaise</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card>
-    <mat-card-header fxLayoutAlign="space-between">
-      <mat-card-title>Où ?</mat-card-title>
-      <mat-icon>map</mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Samedi 12 – Beez / Dimanche 13 – Yvoir</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card>
-    <mat-card-header fxLayoutAlign="space-between">
-      <mat-card-title>Quand ?</mat-card-title>
-      <mat-icon>calendar_today</mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Samedi 12 et Dimanche 13 – 10h00-17h00</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card>
-    <mat-card-header fxLayoutAlign="space-between">
-      <mat-card-title>Pour qui ?</mat-card-title>
-      <mat-icon>account_circle</mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Membres du CAB (débutants bienvenus) – 16 ans minimum</p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card>
-    <mat-card-header fxLayoutAlign="space-between">
-      <mat-card-title>Comment s'inscrire ?</mat-card-title>
-      <mat-icon>how_to_reg</mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Contacter Jocelyne</p>
-      <p fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>call</mat-icon><a href="tel:0494 82 61 14">0494 82 61 14</a></p>
-      <p fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>email</mat-icon><a href="mailto:bukij@hotmail.com">bukij@hotmail.com</a></p>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card>
-    <mat-card-header fxLayoutAlign="space-between">
-      <mat-card-title>Prix & Payement ?</mat-card-title>
-      <mat-icon>attach_money</mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-      <p>60 € pour les deux journées – Inscription avant le 10 Septembre</p>
-      <p>Compte: CAB Hainaut, 21 rue du Pont Marion, 21, 6032 Mont sur Marchienne IBAN BE41 9796 5736 9510 – Communication « Stage initiation 2020  nom et prénom du stagiaire »</p>
-    </mat-card-content>
-  </mat-card>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
 
 </div>

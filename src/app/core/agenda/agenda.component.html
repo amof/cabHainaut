@@ -1,32 +1,27 @@
 <div class="container">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Stage d'initiation</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="assets/img/stage_autonomie.jpg" alt="stage">
-    <mat-card-content>
-      <p>
-        Stage d'automne
-      </p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button [routerLink]="['/agenda', 1]">Plus d'infos</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Nocturne Landelies</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="assets/img/cab_nocturne.jpg" alt="cab nocturne">
-    <mat-card-content>
-      <p>
-        Nocturne de Landelies
-      </p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button [routerLink]="['/agenda', 2]">Plus d'infos</button>
-    </mat-card-actions>
-  </mat-card>
-
+  <div fxFlex *ngIf="events">
+    <mat-card *ngFor="let event of events">
+      <mat-card-header>
+        <mat-card-title>{{event.title}}</mat-card-title>
+        <mat-card-subtitle>{{event.when}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{event.img}}" alt="stage">
+      <mat-card-content>
+        <p>
+          {{event.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button [routerLink]="['/agenda', event._id]">Plus d'infos</button>
+      </mat-card-actions>
+    </mat-card>
+ 
+  </div>
+  <div [hidden]="events || errMess">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
 </div>
