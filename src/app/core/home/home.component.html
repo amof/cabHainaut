@@ -1,27 +1,29 @@
 <div class="container">
-  <div fxFlex *ngIf="nextEvent">
+  <div *ngIf="nextEvent">
     <carousel
     [images]="images"
     [cellsToShow]="1">
   </carousel>
   <p></p>
   <h1>Prochain Evènement</h1>
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{nextEvent.title}}</mat-card-title>
-      <mat-card-subtitle>{{nextEvent.when}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{nextEvent.img}}" alt="Image">
-    <mat-card-content>
-      <p>
-        {{nextEvent.description}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button [routerLink]="['/agenda', nextEvent._id]">Plus d'infos</button>
-    </mat-card-actions>
-  </mat-card>
+  <div *ngIf="(nextEvent | json) != '{}'">
+    <mat-card [routerLink]="['/agenda', nextEvent._id]">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{nextEvent.title}}</mat-card-title>
+        <mat-card-subtitle>{{nextEvent.when}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{nextEvent.img}}" alt="Image">
+      <mat-card-content>
+        <p>
+          {{nextEvent.description}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div *ngIf="(nextEvent | json) === '{}'">
+    <p>Rien de prévu pour le moment !</p>
+  </div>
   </div>
   <div [hidden]="nextEvent || errMess">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
@@ -30,5 +32,4 @@
     <h2>Error</h2>
     <h4>{{errMess}}</h4>
   </div>
-
 </div>

@@ -14,7 +14,7 @@ export class AgendaService {
   constructor(private afs: AngularFirestore) { }
 
   getEvents(): Observable<Event[]> {
-    return this.afs.collection<Event>('agenda', ref => ref.orderBy('date', 'asc')).snapshotChanges()
+    return this.afs.collection<Event>('agenda', ref => ref.orderBy('date', 'asc').where('date', '>', Date.now())).snapshotChanges()
     .pipe(map(actions => {
       return actions.map(action => {
         const data = action.payload.doc.data() as Event;
@@ -33,12 +33,15 @@ export class AgendaService {
       }));
   }
 
-  getNextEvent(): Observable<Event> {
-    return this.afs.collection<Event>('agenda', ref => ref.orderBy('date', 'asc')).snapshotChanges()
+  getNextEvent(): Observable<any> {
+    return this.afs.collection<Event>('agenda', ref => ref.orderBy('date', 'asc').where('date', '>', Date.now())).snapshotChanges()
     .pipe(map(actions => {
-      const data = actions[0].payload.doc.data() as Event;
-      const _id = actions[0].payload.doc.id;
-      return { _id, ...data };
+      if (actions.length > 0) {
+        const data = actions[0].payload.doc.data() as Event;
+        const _id = actions[0].payload.doc.id;
+        return { _id, ...data };
+      }
+      else { return {}; }
     }));
   }
 }
