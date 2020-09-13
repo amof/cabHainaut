@@ -9,19 +9,13 @@
       <h2>Administrateurs (Comité):</h2>
       <div fxFlex>
         <mat-list>
-          <mat-list-item fxFlexFill>
-              <img matListAvatar  src="assets/img/Nico.png" alt="nico">
-              <h4 mat-line><b>Président, CiviCRM</b></h4>
-              <p mat-line>Nicolas Bergeot</p>
-              <p mat-line>nicolas.cabhainaut@gmail.com</p>
-              <p mat-line>0477/ 395 289  </p>
+          <mat-list-item *ngFor="let comiteMember of COMITE" fxFlexFill fxFlexAlign="center center">
+              <img matListAvatar  src="{{comiteMember.img}}" alt="comiteMember">
+              <h3 mat-line><b>{{comiteMember.title}}</b></h3>
+              <p mat-line>{{comiteMember.name}}</p>
+              <p *ngIf="comiteMember.mail" mat-line><a href="mailto:{{comiteMember.mail}}">{{comiteMember.mail}}</a></p>
+              <p *ngIf="comiteMember.phone" mat-line><a href="tel:{{comiteMember.phone}}">{{comiteMember.phone}}</a></p>
           </mat-list-item>
-          <mat-list-item fxFlexFill>
-            <img matListAvatar  src="assets/img/Cedric.png" alt="cedric">
-            <h4 mat-line><b>Vice-Président, Gestion des activités, des rochers et du GRAAL</b></h4>
-            <p mat-line>Cédric Dupont</p>
-            <p mat-line>cedriccabh@gmail.com</p>
-        </mat-list-item>
         </mat-list>
       </div>
     </mat-tab>
