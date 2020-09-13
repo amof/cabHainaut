@@ -1,61 +1,70 @@
 <div class="container">
-  <h1>Règles</h1>
-  <mat-list>
-    <mat-list-item> <mat-icon color="warn">remove_circle</mat-icon> Balbla</mat-list-item>
-    <mat-list-item> <mat-icon color="warn">remove_circle</mat-icon> Balbla</mat-list-item>
-    <mat-list-item> <mat-icon color="accent">add_circle</mat-icon> Balbla</mat-list-item>
-    <mat-list-item> <mat-icon color="accent">add_circle</mat-icon> Balbla</mat-list-item>
-  </mat-list>
+  <mat-tab-group mat-align-tabs="center" (selectedTabChange)="refreshMap($event);">
+    <mat-tab label="Site d'escalade" fxFlex>"
+      <h1>Règles</h1>
 
-  <h1>Topo</h1>
-  <a mat-raised-button color="primary" href="https://www.cartowall.com/en/topo/landelies" target="_blank">Accéder au topo</a>
-
-  <h1>Accès</h1>
-  <div class="map"
-  leaflet
-  [leafletOptions]="options"
-  [leafletLayersControl]="layersControl">
-  </div>
-
-  <h1>Infos</h1>
-  <mat-accordion class="example-headers-align">
-    <mat-expansion-panel  hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Accès
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>map</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
-    </mat-expansion-panel>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Histoire
-        </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>history</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>Les premières incursions des grimpeurs aux Carrières des Calcaires de la Haute Sambre ont débuté dans les années 1980, sous l’impulsion de Paul De Genst, alors président de la section Hainaut du Club Alpin Belge (CABH) et se déroulaient surtout dans le Sanctuaire, la Dalle du Fou n’étant que peu accessible, son terre-plein servant de zone de stockage aux différents types de graviers, avant qu’ils ne soient expédiés par bateau ou par camion. et la dalle possédant dès lors une hauteur bien inférieure à celle d’aujourd’hui. </p>
-      <p>Sous l’impulsion de quelques-uns, dont Jean-Pol Avaux, André Delmée, Jean et Louis-Marie Delin, quelques voies équipées de pitons y sont tracées.</p>
-      <p>Mais les premières voies modernes d’escalade sont véritablement ouvertes quand le terre-plein de la Dalle du Fou est nettoyé et applani, mettant au jour une dalle inclinée de toute beauté qui atteint 35 m de haut.</p>
-      <p>Jacques Vrancken d’une part et, d’autre part, le quattuor Claude Ancion, Jean-Marie Castiaux, Vincent Carlier et Eddy Michaux, ouvrent alors l’essentiel des voies de la Dalle du Fou : Landelies est investi tous les soirs d’été et de grands conciliabules rythment les escalades dans une ambiance détendue et sereine.</p>
-      <p>Un premier topo est ainsi édité par Jean-Marie Castiaux en 1990.</p>
-      <p>Début des années 2000, les membres du CABH (dont les frères Jean et Louis-Marie Delin, Jacques Douchamps, Martial Grislin, Michel Sébille) procèdent au nettoyage général et au remplacement des spits de 8 mm, parfois artisanaux, par des broches standard, toujours en place aujourd’hui.</p>
-      <p>Martial sort en 2006 un topo en version informatique qui regroupe la plupart des voies décrites aujourd’hui.</p>
-      <p>Par ailleurs, les membres du club de spéléo les Sus-pendus, installent, en accord avec le CABH, une via ferrata, la Via ferrata des Suspendus, dans le massif du Sanctuaire, ce qui leur permet de s’entraîner pour les grands gouffres.</p>
-      <p>En 2013, constatant une certaine désaffection du site, le Graal (Groupe de Ré-équipement et Aménagement Alpin de Landelies) est créé par Jacques Douchamps pour entretenir le site sur une base plus régulière. </p>
-      <p>Ce groupe de bénévoles, d’abord composé du trio jacques, Freddy Somville et Yves Van Goethem, va rapidement s’étoffer de membres non seulement du CABH mais d’autres sections du CAB, de membres des Suspendus et même de la section lilloise du CAF. Sans pouvoir les citer toutes et tous (puisque le GRAAL comporte une quarantaine de bénévoles), pensons ici à Luca …, Jean Bastin, Carlos Leblanc, Stéphane Cordio, Daniel Delmaestro, Etienne Delmée, Hubert Pourtois, Luc Toussaint, Louis Henri De Generêt</p> 
-      <ul>
-       <li>La via ferrata sera totalement rééquipée et sécurisée par le Graal en 2014, épaulé par l’équipe Rochers du CAB, dirigée par Joe Dewez épaulé de ses agents techniques, le plus souvent Paul Lejeune.</li>
-       <li>Plusieurs voies sont tracées à l’extrême gauche de la Dalle du Fou, sur la Dalle du Graal.  </li>
-       <li>Le massif Tout-vent (de 80 m de hauteur, dont les 40 m supérieurs sont en rocher acceptable), situé à un autre endroit de la carrière (et aujourd’hui interdit pour permettre une exploitation plus intense), qui avait été initialement nettoyé vers 2010 par le groupe GRIMP des pompiers de Charleroi (sous l’égide de Jacques Dubuisson et Martial Lambrecht) et des membres du CABH (dont Luc Chevalier et Michel Sébille) est équipé de nouvelles voies, essentiellement par une petite équipe composée Jacques Douchamps, Freddy Somville, Etienne Delmée et Stéphane Cordio.</li>
-      </ul>
-      <p>En 2018, le GRAAL entreprend de grandes manœuvres de dérochage, élagage et peignage du rocher, qui se poursuivent encore aujourd’hui sous l’égide de Cédric Dupont, en accord avec la Direction de la Carrière et sous la guidance de la Direction Rochers du CAB. Un effort particulier est porté sur le ré-équipement des voies du Sanctuaire (afin sécuriser le rocher et en améliorer le brochage afin d’éviter toute chute au sol) et le peignage de la zone de jonction entre Dalle du Fou et Dalle du Graal dans l’espoir d’y ouvrir quelques nouvelles voies.</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-  
+      <mat-list>
+        <mat-list-item> <mat-icon color="warn">remove_circle</mat-icon> Balbla</mat-list-item>
+        <mat-list-item> <mat-icon color="warn">remove_circle</mat-icon> Balbla</mat-list-item>
+        <mat-list-item> <mat-icon color="accent">add_circle</mat-icon> Balbla</mat-list-item>
+        <mat-list-item> <mat-icon color="accent">add_circle</mat-icon> Balbla</mat-list-item>
+      </mat-list>
+    
+      <h1>Topo</h1>
+      <a mat-raised-button color="primary" href="https://www.cartowall.com/en/topo/landelies" target="_blank">Accéder au topo</a>
+    </mat-tab>
+    <mat-tab label="Accès" fxFlexAlign="center center" >
+      <div class="map" fxFlexAlign="center center"
+      leaflet
+      (leafletMapReady)="onMapReady($event)"
+      [leafletOptions]="options">
+      </div>
+      <h2>Parkings</h2>
+      <mat-list>
+        <mat-list-item fxHide.lt-md="true"><a href="https://www.google.com/maps/search/?api=1&query=50.394266,4.355829" target="_blank">Parking Carrière</a></mat-list-item>
+        <mat-list-item fxHide.gt-sm="true"><a href="google.navigation:q=Chemin du Cerisier, 6111 Landelies" target="_blank">Parking Carrière</a></mat-list-item>
+        <mat-list-item fxHide.lt-md="true"><a href="https://www.google.com/maps/search/?api=1&query=50.38257696002369,4.353554655772931" target="_blank">Parking Stand Tir</a></mat-list-item>
+        <mat-list-item fxHide.gt-sm="true"><a href="google.navigation:q=Rue de la Madeleine 31, 6111 Landelies" target="_blank">Parking Stand Tir</a></mat-list-item>
+      </mat-list>
+      <h2>Accès</h2>
+      <h3>Depuis le parking de la Carrière</h3>
+      <p>
+        Blablabla
+      </p>
+      <h3>Depuis le parking du Stand de Tir</h3>
+      <p>
+        Blablabla
+      </p>
+    </mat-tab>
+    <mat-tab label="Infos">
+      <mat-accordion color="primary" class="example-headers-align">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Histoire
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>history</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Les premières incursions des grimpeurs aux Carrières des Calcaires de la Haute Sambre ont débuté dans les années 1980, sous l’impulsion de Paul De Genst, alors président de la section Hainaut du Club Alpin Belge (CABH) et se déroulaient surtout dans le Sanctuaire, la Dalle du Fou n’étant que peu accessible, son terre-plein servant de zone de stockage aux différents types de graviers, avant qu’ils ne soient expédiés par bateau ou par camion. et la dalle possédant dès lors une hauteur bien inférieure à celle d’aujourd’hui. </p>
+          <p>Sous l’impulsion de quelques-uns, dont Jean-Pol Avaux, André Delmée, Jean et Louis-Marie Delin, quelques voies équipées de pitons y sont tracées.</p>
+          <p>Mais les premières voies modernes d’escalade sont véritablement ouvertes quand le terre-plein de la Dalle du Fou est nettoyé et applani, mettant au jour une dalle inclinée de toute beauté qui atteint 35 m de haut.</p>
+          <p>Jacques Vrancken d’une part et, d’autre part, le quattuor Claude Ancion, Jean-Marie Castiaux, Vincent Carlier et Eddy Michaux, ouvrent alors l’essentiel des voies de la Dalle du Fou : Landelies est investi tous les soirs d’été et de grands conciliabules rythment les escalades dans une ambiance détendue et sereine.</p>
+          <p>Un premier topo est ainsi édité par Jean-Marie Castiaux en 1990.</p>
+          <p>Début des années 2000, les membres du CABH (dont les frères Jean et Louis-Marie Delin, Jacques Douchamps, Martial Grislin, Michel Sébille) procèdent au nettoyage général et au remplacement des spits de 8 mm, parfois artisanaux, par des broches standard, toujours en place aujourd’hui.</p>
+          <p>Martial sort en 2006 un topo en version informatique qui regroupe la plupart des voies décrites aujourd’hui.</p>
+          <p>Par ailleurs, les membres du club de spéléo les Sus-pendus, installent, en accord avec le CABH, une via ferrata, la Via ferrata des Suspendus, dans le massif du Sanctuaire, ce qui leur permet de s’entraîner pour les grands gouffres.</p>
+          <p>En 2013, constatant une certaine désaffection du site, le Graal (Groupe de Ré-équipement et Aménagement Alpin de Landelies) est créé par Jacques Douchamps pour entretenir le site sur une base plus régulière. </p>
+          <p>Ce groupe de bénévoles, d’abord composé du trio jacques, Freddy Somville et Yves Van Goethem, va rapidement s’étoffer de membres non seulement du CABH mais d’autres sections du CAB, de membres des Suspendus et même de la section lilloise du CAF. Sans pouvoir les citer toutes et tous (puisque le GRAAL comporte une quarantaine de bénévoles), pensons ici à Luca …, Jean Bastin, Carlos Leblanc, Stéphane Cordio, Daniel Delmaestro, Etienne Delmée, Hubert Pourtois, Luc Toussaint, Louis Henri De Generêt</p> 
+          <ul>
+           <li>La via ferrata sera totalement rééquipée et sécurisée par le Graal en 2014, épaulé par l’équipe Rochers du CAB, dirigée par Joe Dewez épaulé de ses agents techniques, le plus souvent Paul Lejeune.</li>
+           <li>Plusieurs voies sont tracées à l’extrême gauche de la Dalle du Fou, sur la Dalle du Graal.  </li>
+           <li>Le massif Tout-vent (de 80 m de hauteur, dont les 40 m supérieurs sont en rocher acceptable), situé à un autre endroit de la carrière (et aujourd’hui interdit pour permettre une exploitation plus intense), qui avait été initialement nettoyé vers 2010 par le groupe GRIMP des pompiers de Charleroi (sous l’égide de Jacques Dubuisson et Martial Lambrecht) et des membres du CABH (dont Luc Chevalier et Michel Sébille) est équipé de nouvelles voies, essentiellement par une petite équipe composée Jacques Douchamps, Freddy Somville, Etienne Delmée et Stéphane Cordio.</li>
+          </ul>
+          <p>En 2018, le GRAAL entreprend de grandes manœuvres de dérochage, élagage et peignage du rocher, qui se poursuivent encore aujourd’hui sous l’égide de Cédric Dupont, en accord avec la Direction de la Carrière et sous la guidance de la Direction Rochers du CAB. Un effort particulier est porté sur le ré-équipement des voies du Sanctuaire (afin sécuriser le rocher et en améliorer le brochage afin d’éviter toute chute au sol) et le peignage de la zone de jonction entre Dalle du Fou et Dalle du Graal dans l’espoir d’y ouvrir quelques nouvelles voies.</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
+  </mat-tab-group>
 </div>
