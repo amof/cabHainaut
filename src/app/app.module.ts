@@ -37,6 +37,7 @@ import { LandeliesComponent } from './core/landelies/landelies.component';
 import { AgendaComponent } from './core/agenda/agenda.component';
 import { AgendaDetailComponent } from './core/agenda-detail/agenda-detail.component';
 import { TeamComponent } from './core/team/team.component';
+import { PhotosComponent } from './core/photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { TeamComponent } from './core/team/team.component';
     AgendaComponent,
     AgendaDetailComponent,
     TeamComponent,
+    PhotosComponent,
   ],
   imports: [
     BrowserModule,
