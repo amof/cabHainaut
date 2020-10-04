@@ -1,17 +1,20 @@
 <div class="container">
   <mat-tab-group mat-align-tabs="center" (selectedTabChange)="refreshMap($event);">
-    <mat-tab label="Site d'escalade" fxFlex>"
+    <mat-tab label="Site d'escalade" fxFlex>
       <h1>Règles</h1>
-
       <mat-list>
         <mat-list-item> <mat-icon color="warn">remove_circle</mat-icon> Balbla</mat-list-item>
         <mat-list-item> <mat-icon color="warn">remove_circle</mat-icon> Balbla</mat-list-item>
         <mat-list-item> <mat-icon color="accent">add_circle</mat-icon> Balbla</mat-list-item>
         <mat-list-item> <mat-icon color="accent">add_circle</mat-icon> Balbla</mat-list-item>
       </mat-list>
-    
       <h1>Topo</h1>
       <a mat-raised-button color="primary" href="https://www.cartowall.com/en/topo/landelies" target="_blank">Accéder au topo</a>
+      <h1>Description</h1>
+      <p>
+        Description en résumé ici.
+      </p>
+
     </mat-tab>
     <mat-tab label="Accès" fxFlexAlign="center center" >
       <div class="map" fxFlexAlign="center center"
@@ -63,6 +66,59 @@
            <li>Le massif Tout-vent (de 80 m de hauteur, dont les 40 m supérieurs sont en rocher acceptable), situé à un autre endroit de la carrière (et aujourd’hui interdit pour permettre une exploitation plus intense), qui avait été initialement nettoyé vers 2010 par le groupe GRIMP des pompiers de Charleroi (sous l’égide de Jacques Dubuisson et Martial Lambrecht) et des membres du CABH (dont Luc Chevalier et Michel Sébille) est équipé de nouvelles voies, essentiellement par une petite équipe composée Jacques Douchamps, Freddy Somville, Etienne Delmée et Stéphane Cordio.</li>
           </ul>
           <p>En 2018, le GRAAL entreprend de grandes manœuvres de dérochage, élagage et peignage du rocher, qui se poursuivent encore aujourd’hui sous l’égide de Cédric Dupont, en accord avec la Direction de la Carrière et sous la guidance de la Direction Rochers du CAB. Un effort particulier est porté sur le ré-équipement des voies du Sanctuaire (afin sécuriser le rocher et en améliorer le brochage afin d’éviter toute chute au sol) et le peignage de la zone de jonction entre Dalle du Fou et Dalle du Graal dans l’espoir d’y ouvrir quelques nouvelles voies.</p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Modalités d’accès et de séjour sur le site
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Via Ferrata
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Dalle du Fou
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              L’ADA Beach et la partie aval de la vie ferrata
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Le sentier de la tyrolienne
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Le sanctuaire
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          
         </mat-expansion-panel>
       </mat-accordion>
     </mat-tab>
