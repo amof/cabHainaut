@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 *.code-workspace
 src/environments/process.ts
+.firebase/
