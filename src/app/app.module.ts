@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutModule } from '@angular/cdk/layout';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -23,7 +24,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatTabsModule } from '@angular/material/tabs'; 
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 // Carousel
 import { IvyCarouselModule } from 'angular-responsive-carousel';
@@ -38,6 +40,7 @@ import { AgendaComponent } from './core/agenda/agenda.component';
 import { AgendaDetailComponent } from './core/agenda-detail/agenda-detail.component';
 import { TeamComponent } from './core/team/team.component';
 import { PhotosComponent } from './core/photos/photos.component';
+import { MainNavComponent } from './core/main-nav/main-nav.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ import { PhotosComponent } from './core/photos/photos.component';
     AgendaDetailComponent,
     TeamComponent,
     PhotosComponent,
+    MainNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ import { PhotosComponent } from './core/photos/photos.component';
     IvyCarouselModule,
     FontAwesomeModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSidenavModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
