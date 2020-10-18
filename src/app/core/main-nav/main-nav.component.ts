@@ -7,6 +7,8 @@ import {MatIconRegistry} from '@angular/material/icon';
 
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faHome, faCalendarAlt, faMountain, faNewspaper, faImages, faHandsHelping} from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-icons';
+
 
 @Component({
   selector: 'app-main-nav',
@@ -21,14 +23,13 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
     private faLibrary: FaIconLibrary) {
-iconRegistry.addSvgIcon(
-'cab',
-sanitizer.bypassSecurityTrustResourceUrl('assets/img/cab_white.svg'));
-faLibrary.addIcons(faHome, faCalendarAlt, faMountain, faNewspaper, faImages, faHandsHelping);
-
-}
-
+    iconRegistry.addSvgIcon('cab', sanitizer.bypassSecurityTrustResourceUrl('assets/img/cab_white.svg'));
+    faLibrary.addIcons(faHome, faCalendarAlt, faMountain, faNewspaper, faImages, faHandsHelping, faWhatsapp, faFacebook);
+  }
 
 }
