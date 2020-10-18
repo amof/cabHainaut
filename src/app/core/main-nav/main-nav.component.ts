@@ -23,11 +23,10 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer,
-    private faLibrary: FaIconLibrary) {
+  constructor(private breakpointObserver: BreakpointObserver,
+              iconRegistry: MatIconRegistry,
+              sanitizer: DomSanitizer,
+              private faLibrary: FaIconLibrary) {
     iconRegistry.addSvgIcon('cab', sanitizer.bypassSecurityTrustResourceUrl('assets/img/cab_white.svg'));
     faLibrary.addIcons(faHome, faCalendarAlt, faMountain, faNewspaper, faImages, faHandsHelping, faWhatsapp, faFacebook);
   }
