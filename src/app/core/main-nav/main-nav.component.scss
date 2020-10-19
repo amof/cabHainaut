@@ -47,3 +47,39 @@ font-size: 1rem;
 .social {
   width: 100%;
 }
+
+a {
+  text-decoration: none;
+  color: #3c0019;
+}
+
+.mat-list-item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1px;
+  height: 100%;
+  width: 0.3rem;
+  background-color: #6b003e;
+
+  opacity: 0;
+
+  transform: scaleY(0);
+  transition: transform 0.2s, opacity 0.2s;
+}
+.mat-list-item:hover:before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.mat-nav-list {
+  padding-top: 0;
+  a.active {
+    background-color: #6b003e;
+    color: white;
+  }
+} 
+
+.separation {
+  margin: 0;
+}

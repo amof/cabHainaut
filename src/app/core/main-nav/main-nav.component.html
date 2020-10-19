@@ -3,18 +3,21 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <div fxFlex fxLayout="column" class="test">
+    <div fxFlex fxLayout="column">
       <div class="imagelogo" fxLayoutAlign="center center">
         <img src="assets/img/logo-cabh.png" alt="logo cabh" >
       </div>
-      <mat-nav-list>
-        <a mat-list-item routerLinkActive='active' routerLink="/home">Accueil</a>
-        <a mat-list-item routerLink="/agenda">Agenda</a>
-        <a mat-list-item routerLink="/landelies">Landelies</a>
-        <a mat-list-item routerLink="">Rock&Glace</a>
-        <a mat-list-item routerLink="/photos">Photos</a>
-        <a mat-list-item routerLink="/team">CAB Hainaut</a>
-      </mat-nav-list>
+      <mat-divider class="separation"></mat-divider>
+      <ng-container>
+        <mat-nav-list>
+          <a mat-list-item role="listitem" routerLinkActive='active' routerLink="/home">Home</a>
+          <a mat-list-item role="listitem" routerLinkActive='active' routerLink="/agenda">Agenda</a>
+          <a mat-list-item role="listitem" routerLinkActive='active' routerLink="/landelies">Landelies</a>
+          <a mat-list-item role="listitem" routerLinkActive='active' routerLink="/rockglace">Rock&Glace</a>
+          <a mat-list-item role="listitem" routerLinkActive='active' routerLink="/photos">Photos</a>
+          <a mat-list-item role="listitem" routerLinkActive='active' routerLink="/team">CAB Hainaut</a>
+        </mat-nav-list>
+      </ng-container>
       <mat-divider></mat-divider>
       <div fxLayout="column" fxLayoutAlign="center center" class="social">
         <p><i>Rejoignez-nous sur</i></p>
