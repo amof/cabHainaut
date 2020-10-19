@@ -14,7 +14,7 @@ export class NewsService {
   constructor(private afs: AngularFirestore) { }
 
   getNews(): Observable<News[]> {
-    return this.afs.collection<News>('news').snapshotChanges()
+    return this.afs.collection<News>('news', ref => ref.orderBy('date', 'desc')).snapshotChanges()
     .pipe(map(actions => {
       return actions.map(action => {
         const data = action.payload.doc.data() as News;

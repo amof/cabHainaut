@@ -10,7 +10,6 @@ h1 {
 
 h2 {
   font-size: 1.1rem;
-  color: #6b003f;
 }
 
 .banniere {
@@ -28,4 +27,31 @@ h2 {
   p {
     font-size: 0.8rem;
   }
+}
+
+.mat-card {
+  margin: 0.5rem;
+  box-shadow: 0px 2px 1px -1px rgba(107, 0, 63, 0.4), 0px 1px 1px 0px rgba(107, 0, 63, 0.14), 0px 1px 3px 0px rgba(107, 0, 63, 0.12);
+  .mat-card-content{
+    padding-top: 0.7rem;
+  }
+  .mat-divider {
+    border-top-color: rgba(107, 0, 63, 0.7);
+    border-top-width: 0.13rem;
+  }
+  .mat-card-header {
+    color: #6b003f;
+  }
+  .mat-card-footer {
+    margin-right: 0.5rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.mat-list-item {
+  height: auto;
 }
