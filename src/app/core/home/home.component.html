@@ -1,33 +1,53 @@
-<div class="container">
-  <div *ngIf="nextEvent && news">
-  <h1>News</h1>
-  <mat-card *ngIf="news">
-    <mat-card-header>
-      <mat-card-title>{{news.title}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        {{news.content}}
-    </mat-card-content>
-  </mat-card>
-  <h1>Prochain Evènement</h1>
-  <div *ngIf="(nextEvent | json) != '{}'">
-    <mat-card [routerLink]="['/agenda', nextEvent._id]">
-      <mat-card-header>
-        <mat-card-title>{{nextEvent.title}}</mat-card-title>
-        <mat-card-subtitle>{{nextEvent.when}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <img mat-card-image src="{{nextEvent.img}}" alt="Image">
+<div class="banniere" fxLayoutAlign="center center" fxHide.lt-sm="true">
+  <img src="assets/img/banniere.png" alt="banniere" >
+</div>
 
+<div class="container">
+  <div fxLayout="row" fxLayout.lt-md="column" *ngIf="nextEvent && news" fxLayoutAlign="space-between">
+    <div fxLayout="column" fxFlex.gt-md="69%">
+      <h1>Bienvenue</h1>
+      <p>Message de bienvenue</p>
+      <h1>News</h1>
+      <mat-card *ngFor="let anews of news">
+        <mat-card-header>
+          <mat-card-title>{{anews.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            {{anews.content}}
+        </mat-card-content>
+        <mat-card-footer>
+          <p>Par xxx</p>
+          <p>Publié le xxx</p>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex.gt-md="30%">
+      <h1>Evènements</h1>
+      <h2>Prochain évènement le {{nextEvent.date | date:'dd/MM/yy'}}</h2>
+      <div *ngIf="(nextEvent | json) != '{}'" fxLayoutAlign="center center">
+        <mat-card [routerLink]="['/agenda', nextEvent._id]" fxFlex=80%>
+          <mat-card-header>
+            <mat-card-title>{{nextEvent.title}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="{{nextEvent.img}}" alt="Image">
+          <mat-card-content>
+            <p>
+              {{nextEvent.description}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <h2>Suivi de ...</h2>
+      <div *ngFor="let event of events">
         <p>
-          {{nextEvent.description}}
+          <fa-icon icon="chevron-right" size="lg"></fa-icon>
+          <a [routerLink]="['/agenda', event._id]">{{event.title}}</a> ({{event.date | date:'dd/MM/yy'}})
         </p>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div *ngIf="(nextEvent | json) === '{}'">
-    <p>Rien de prévu pour le moment !</p>
-  </div>
+      </div>
+      <div *ngIf="(nextEvent | json) === '{}'">
+        <p>Rien de prévu pour le moment !</p>
+      </div>
+    </div>
   </div>
   <div [hidden]="nextEvent || news || errMess">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
