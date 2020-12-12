@@ -14,10 +14,10 @@
         </mat-card-header>
         <mat-divider></mat-divider>
         <mat-card-content>
-            {{anews.content}}
+          <div [innerHTML]="anews.content"></div>
         </mat-card-content>
         <mat-card-footer fxLayoutAlign="end center" >
-          <p>Publié le <i>{{anews.date | date:'dd/MM/yy'}}</i> par <i>admin</i></p>
+          <p>Publié le <i>{{anews.createdAt.toDate() | date:'dd/MM/yy'}}</i> par <i>admin</i></p>
         </mat-card-footer>
       </mat-card>
     </div>

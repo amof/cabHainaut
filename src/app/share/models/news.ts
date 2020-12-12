@@ -3,4 +3,7 @@ export interface News {
   title: string;
   content: string;
   date: number;
+  user_id: string;
+  createdAt: any;
+  updatedAt: any;
 }

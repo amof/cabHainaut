@@ -7,13 +7,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+// Ngx Quill
+import { QuillModule } from 'ngx-quill';
 
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -26,6 +33,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // Carousel
 import { IvyCarouselModule } from 'angular-responsive-carousel';
@@ -41,6 +51,8 @@ import { AgendaDetailComponent } from './core/agenda-detail/agenda-detail.compon
 import { TeamComponent } from './core/team/team.component';
 import { PhotosComponent } from './core/photos/photos.component';
 import { MainNavComponent } from './core/main-nav/main-nav.component';
+import { AdminComponent } from './core/admin/admin.component';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +64,8 @@ import { MainNavComponent } from './core/main-nav/main-nav.component';
     TeamComponent,
     PhotosComponent,
     MainNavComponent,
+    AdminComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +87,20 @@ import { MainNavComponent } from './core/main-nav/main-nav.component';
     MatProgressSpinnerModule,
     MatTabsModule,
     MatSidenavModule,
-    LayoutModule
+    LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AngularFirestoreModule,
+    MatCheckboxModule,
+    AngularFireAuthModule,
+    QuillModule.forRoot({
+      customOptions: [{
+        import: 'formats/font',
+        whitelist: ['mirza', 'roboto', 'aref', 'serif', 'sansserif', 'monospace']
+      }]
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
