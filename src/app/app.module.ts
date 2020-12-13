@@ -36,6 +36,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Carousel
 import { IvyCarouselModule } from 'angular-responsive-carousel';
@@ -53,6 +56,8 @@ import { PhotosComponent } from './core/photos/photos.component';
 import { MainNavComponent } from './core/main-nav/main-nav.component';
 import { AdminComponent } from './core/admin/admin.component';
 import { LoginComponent } from './core/login/login.component';
+import { ConfirmDialogComponent } from './share/components/confirm-dialog/confirm-dialog.component';
+import { NewsDialogComponent } from './core/admin/news-dialog/news-dialog.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +71,8 @@ import { LoginComponent } from './core/login/login.component';
     MainNavComponent,
     AdminComponent,
     LoginComponent,
+    ConfirmDialogComponent,
+    NewsDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,11 +96,14 @@ import { LoginComponent } from './core/login/login.component';
     MatSidenavModule,
     LayoutModule,
     FormsModule,
+    MatDialogModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     AngularFirestoreModule,
     MatCheckboxModule,
+    MatPaginatorModule,
+    MatTableModule,
     AngularFireAuthModule,
     QuillModule.forRoot({
       customOptions: [{

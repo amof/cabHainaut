@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { News } from '../models/news';
 import { AuthService } from './auth.service';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +28,8 @@ export class NewsService {
 
   postNews(news: News): Promise<any> {
     news.user_id = this.authService.currentUserId;
-    news.createdAt = firebase.default.firestore.FieldValue.serverTimestamp();
-    news.updatedAt =  firebase.default.firestore.FieldValue.serverTimestamp();
+    news.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+    news.updatedAt =  firebase.firestore.FieldValue.serverTimestamp();
 
     if (this.authService.isLoggedIn) {
       return this.afs.collection('news').add(news);
