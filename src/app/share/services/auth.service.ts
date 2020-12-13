@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { User, UserLogin } from '../models/user';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -36,14 +36,14 @@ export class AuthService {
   }
 
   // Sign in with email/password
-  SignIn(user: UserLogin) {
+  SignIn(user: UserLogin): Promise<any> {
     if (user.rememberMe === true)
     { // Indicates that the state will be persisted even when the browser window is closed or the activity is destroyed
-      this.afAuth.setPersistence(firebase.default.auth.Auth.Persistence.LOCAL);
+      this.afAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     } else
     { // Indicates that the state will only persist in the current session or tab,
       // and will be cleared when the tab or window in which the user authenticated is closed
-      this.afAuth.setPersistence(firebase.default.auth.Auth.Persistence.SESSION);
+      this.afAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
     }
     return this.afAuth.signInWithEmailAndPassword(user.email, user.password)
       .then((result) => {
@@ -54,7 +54,7 @@ export class AuthService {
       });
   }
 
-  isLoggedIn() {
+  isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
   }
 
@@ -64,14 +64,14 @@ export class AuthService {
   }
 
   // Reset Forgot password
-  ForgotPassword(passwordResetEmail: string) {
+  ForgotPassword(passwordResetEmail: string): Promise<any> {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail);
   }
 
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user) {
+  SetUserData(user): Promise<any> {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
@@ -84,7 +84,7 @@ export class AuthService {
   }
 
   // Sign out
-  SignOut() {
+  SignOut(): Promise<any> {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['login']);
