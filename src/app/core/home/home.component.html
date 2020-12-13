@@ -14,7 +14,7 @@
         </mat-card-header>
         <mat-divider></mat-divider>
         <mat-card-content>
-          <div [innerHTML]="anews.content"></div>
+          <quill-view [content]="anews.content" format="html" theme="snow"></quill-view>
         </mat-card-content>
         <mat-card-footer fxLayoutAlign="end center" >
           <p>Publié le <i>{{anews.createdAt.toDate() | date:'dd/MM/yy'}}</i> par <i>admin</i></p>
