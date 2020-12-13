@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Log In</h1>
+    <h1>Admin / Se connecter</h1>
     <form novalidate [formGroup]="loginForm" #fform="ngForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
@@ -12,10 +12,7 @@
             <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
             <mat-error *ngIf="formErrors.password"> {{formErrors.password}} </mat-error>
         </mat-form-field>
-        <div class="alignCenter">
-            <button mat-flat-button [disabled]="loginForm.invalid" class="loginButton" color=primary type="submit">Login</button>
-            <mat-checkbox class="rememberCB" formControlName="rememberMe">Remember Me</mat-checkbox>
-        </div>
-        <mat-divider></mat-divider>
+        <button mat-flat-button [disabled]="loginForm.invalid" class="loginButton" color=primary type="submit">Login</button>
+        <mat-checkbox class="rememberCB" formControlName="rememberMe">Remember Me</mat-checkbox>
     </form>
 </div>

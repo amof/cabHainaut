@@ -9,6 +9,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faHome, faCalendarAlt, faMountain, faNewspaper, faImages, faHandsHelping} from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
+import { AuthService } from '../../share/services/auth.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -16,6 +17,8 @@ import { faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent {
+
+  isLoggedIn$: Observable<boolean>;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -26,9 +29,15 @@ export class MainNavComponent {
   constructor(private breakpointObserver: BreakpointObserver,
               iconRegistry: MatIconRegistry,
               sanitizer: DomSanitizer,
-              private faLibrary: FaIconLibrary) {
+              private faLibrary: FaIconLibrary,
+              private authService: AuthService) {
     iconRegistry.addSvgIcon('cab', sanitizer.bypassSecurityTrustResourceUrl('assets/img/cab_white.svg'));
     faLibrary.addIcons(faHome, faCalendarAlt, faMountain, faNewspaper, faImages, faHandsHelping, faWhatsapp, faFacebook);
+    this.isLoggedIn$ = this.authService.isLoggedIn();
+  }
+
+  disconnect(): void {
+    this.authService.SignOut();
   }
 
 }

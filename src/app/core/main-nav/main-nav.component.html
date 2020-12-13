@@ -7,7 +7,7 @@
       <div class="imagelogo" fxLayoutAlign="center center">
         <img src="assets/img/logo-cabh.png" alt="logo cabh" >
       </div>
-      <mat-divider class="separation"></mat-divider>
+      <mat-divider></mat-divider>
       <ng-container>
         <mat-nav-list>
           <a mat-list-item role="listitem" routerLinkActive='active' routerLink="/home">Home</a>
@@ -25,6 +25,11 @@
           <a href="https://www.facebook.com/groups/73204770464" target="_blank" rel="noopener noreferrer"><fa-icon [icon]="['fab', 'facebook']" size="lg"></fa-icon></a>
           <a href="https://chat.whatsapp.com/EslcVqcZWLLJcJR5WaHLES" target="_blank" rel="noopener noreferrer"><fa-icon [icon]="['fab', 'whatsapp']" size="lg"></fa-icon></a>
         </div>
+      </div>
+      <div *ngIf="isLoggedIn$ | async" >
+        <mat-divider class="separation"></mat-divider>
+        <button mat-button routerLink="/admin">Admin</button>
+        <button mat-button (click)="disconnect()">Me déconnecter</button>
       </div>
       <div class="vertical-spacer"></div>
       <div fxLayoutAlign="center center">
