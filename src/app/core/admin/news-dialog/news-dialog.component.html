@@ -1,12 +1,15 @@
-<form [formGroup]="postForm" #fform="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
+<form [formGroup]="newsForm" #fform="ngForm" fxLayout="column" >
     <mat-form-field fxFlex=60%>
         <mat-label>Titre</mat-label>
         <input matInput formControlName="title" type="text" required>
     </mat-form-field>
-    <mat-label>Description</mat-label>
-    <quill-editor formControlName="content"></quill-editor>
+    <div >
+        <mat-label>Description</mat-label>
+        <quill-editor formControlName="content" [styles]="{'min-height': '20rem'}"></quill-editor>
+    </div>
 
     <div>
-        <button mat-button type="submit">Submit</button>
+        <button mat-button (click)="onDismiss()">Annuler</button>
+        <button mat-button (click)="onSend()" [disabled]="!newsForm.valid">Envoyer</button>
     </div>
 </form>

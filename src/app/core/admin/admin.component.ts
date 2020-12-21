@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,33 +27,50 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.newsService.getNews().subscribe( news => {
-      console.log(news);
-      this.news = news;
-      this.dataSource = new MatTableDataSource<News>(this.news);
-      this.dataSource.paginator = this.paginator;
+      // workaround to not update if the server has not yet timestamped
+      let updateListOfNews = true;
+      news.forEach(element => {
+        if (element.createdAt === null) {
+          updateListOfNews = false;
+        }
+      });
+      if (updateListOfNews === true)
+      {
+        console.log(news);
+        this.news = news;
+        this.dataSource = new MatTableDataSource<News>(this.news);
+        this.dataSource.paginator = this.paginator;
+      }
+
     });
   }
 
   addNews(): void {
     const dialogRef = this.dialog.open(NewsDialogComponent, {
-      maxWidth: "400px",
+      height: '95%',
+      width: '100%',
       data: {} as News
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      console.log(dialogResult);
+      if (dialogResult) {
+        this.newsService.postNews(dialogResult as News);
+      }
     });
   }
 
   editNews(news: News): void {
 
     const dialogRef = this.dialog.open(NewsDialogComponent, {
-      maxWidth: "400px",
+      height: '95%',
+      width: '100%',
       data: news
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      console.log(dialogResult);
+      if (dialogResult) {
+        this.newsService.updateNews(news._id, dialogResult as News);
+      }
     });
   }
 
@@ -64,12 +80,13 @@ export class AdminComponent implements OnInit {
     const dialogData = new ConfirmDialogModel('Confirmer la suppression', message);
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      console.log(dialogResult);
+      if (dialogResult === true) {
+        this.newsService.deleteNews(news._id);
+      }
     });
   }
 }
