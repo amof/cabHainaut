@@ -22,7 +22,7 @@ export class AgendaService {
 
   getEvents(): Observable<Event[]> {
     return this.afs.collection<Event>('agenda', ref =>
-    ref.orderBy('event_date_start', 'asc').where('event_date_start', '>', firebase.firestore.Timestamp.now())).snapshotChanges()
+    ref.orderBy('eventDateStart', 'asc').where('eventDateStart', '>', firebase.firestore.Timestamp.now())).snapshotChanges()
     .pipe(map(actions => {
       return actions.map(action => {
         const data = action.payload.doc.data() as Event;
@@ -53,13 +53,42 @@ export class AgendaService {
     }));
   }
 
+  updateEvent(id: string, event: Event): Promise<any> {
+    if (this.authService.isLoggedIn) {
+      return this.afs.collection('agenda').doc(id)
+      .set({  updatedAt:  firebase.firestore.FieldValue.serverTimestamp(),
+              eventDateStart: event.eventDateStart,
+              eventDateEnd: event.eventDateEnd,
+              title: event.title,
+              description: event.description,
+              imgUrl: event.imgUrl,
+              eventLocation: event.eventLocation,
+              register: event.register,
+              contactMail: event.contactMail,
+              contactPhone: event.contactPhone
+          }, { merge: true });
+    } else {
+      return Promise.reject(new Error('No User Logged In!'));
+    }
+  }
+
+
   postEvent(event: Event): Promise<any> {
-    event.user_id = this.authService.currentUserId;
+    event.userId = this.authService.currentUserId;
     event.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     event.updatedAt =  firebase.firestore.FieldValue.serverTimestamp();
 
     if (this.authService.isLoggedIn) {
       return this.afs.collection('agenda').add(event);
+    } else {
+      return Promise.reject(new Error('No User Logged In!'));
+    }
+  }
+
+  async deleteEvent(event: Event): Promise<any> {
+    if (this.authService.isLoggedIn) {
+      await this.deleteImage(event.imgUrl);
+      return await this.afs.collection('agenda').doc(event._id).delete();
     } else {
       return Promise.reject(new Error('No User Logged In!'));
     }
@@ -76,4 +105,15 @@ export class AgendaService {
     return ref.put(img);
   }
 
+  deleteImage(imgUrl: string): Promise<any> {
+    if (this.authService.isLoggedIn) {
+      if (imgUrl) {
+        return this.afStorage.storage.refFromURL(imgUrl).delete();
+      } else {
+        return Promise.resolve();
+      }
+    } else {
+      return Promise.reject(new Error('No User Logged In!'));
+    }
+  }
 }

@@ -117,4 +117,34 @@ export class AdminComponent implements OnInit {
       }
     });
   }
+
+  editEvent(event: Event): void {
+    const dialogRef = this.dialog.open(EventDialogComponent, {
+      height: '95%',
+      width: '100%',
+      data: event
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this.agendaService.updateEvent(event._id, dialogResult as Event);
+      }
+    });
+  }
+
+  deleteEvent(event: Event): void {
+    const message = 'Voulez-vous supprimer l\'évènement \'' + event.title + '\' ?';
+
+    const dialogData = new ConfirmDialogModel('Confirmer la suppression', message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult === true) {
+        this.agendaService.deleteEvent(event);
+      }
+    });
+  }
 }

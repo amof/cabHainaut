@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Ajouter Evènement</h2>
+<h2 mat-dialog-title>{{windowTitle}}</h2>
 <mat-dialog-content>
   <div *ngIf="!uploadingImg">
     <form [formGroup]="eventForm" #fform="ngForm" fxLayout="column">
@@ -6,20 +6,23 @@
             <mat-label>Titre</mat-label>
             <input matInput formControlName="title" type="text" required>
         </mat-form-field>
-        <mat-form-field>
-            <ngx-mat-file-input formControlName="img" [multiple]="false" accept="image/*" color="primary">
+        <div fxLayout="row">
+          <mat-form-field fxFlex="60%">
+            <ngx-mat-file-input formControlName="imgFile" [multiple]="false" accept="image/*" color="primary">
               <mat-icon ngxMatFileInputIcon>folder</mat-icon>
             </ngx-mat-file-input>
-        </mat-form-field>
+          </mat-form-field>
+          <button mat-button *ngIf="this.eventForm.value.imgFile" (click)="removeImageFile()">Supprimer</button>
+        </div>
         <div>
             <mat-label>Description</mat-label>
             <quill-editor formControlName="description" [styles]="{'min-height': '10rem'}" required></quill-editor>
         </div>
         <div fxLayout="row" fxFlex=60% fxLayoutGap=1rem>
             <mat-form-field fxflex=50%>
-                <input matInput [ngxMatDatetimePicker]="event_date_start" placeholder="Début de l'évènement" formControlName="event_date_start" required>
-                <mat-datepicker-toggle matSuffix [for]="event_date_start"></mat-datepicker-toggle>
-                <ngx-mat-datetime-picker #event_date_start [showSpinners]="true" [showSeconds]="true" [stepHour]="1"
+                <input matInput [ngxMatDatetimePicker]="date_start" placeholder="Début de l'évènement" formControlName="eventDateStart" required>
+                <mat-datepicker-toggle matSuffix [for]="date_start"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #date_start [showSpinners]="true" [showSeconds]="true" [stepHour]="1"
                   [stepMinute]="1" [stepSecond]="1" [touchUi]="false"
                   [enableMeridian]="false">
                   <ng-template>
@@ -28,9 +31,9 @@
                 </ngx-mat-datetime-picker>
               </mat-form-field>
               <mat-form-field fxflex=50%>
-                <input matInput [ngxMatDatetimePicker]="event_date_end" placeholder="Fin de l'évènement" formControlName="event_date_end" required>
-                <mat-datepicker-toggle matSuffix [for]="event_date_end"></mat-datepicker-toggle>
-                <ngx-mat-datetime-picker #event_date_end [showSpinners]="true" [showSeconds]="true" [stepHour]="1"
+                <input matInput [ngxMatDatetimePicker]="date_end" placeholder="Fin de l'évènement" formControlName="eventDateEnd" required>
+                <mat-datepicker-toggle matSuffix [for]="date_end"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #date_end [showSpinners]="true" [showSeconds]="true" [stepHour]="1"
                   [stepMinute]="1" [stepSecond]="1" [touchUi]="false"
                   [enableMeridian]="false">
                   <ng-template>
@@ -40,19 +43,19 @@
               </mat-form-field>
               <mat-form-field fxFlex=60%>
                 <mat-label>Localisation</mat-label>
-                <input matInput formControlName="event_location" type="text" required>
+                <input matInput formControlName="eventLocation" type="text" required>
                 <mat-icon matSuffix>place</mat-icon>
             </mat-form-field>
         </div>
         <div fxLayoutGap=1rem>
             <mat-form-field fxFlex=50%>
                 <mat-label>Email</mat-label>
-                <input matInput formControlName="contact_mail" type="email" required>
+                <input matInput formControlName="contactMail" type="email" required>
                 <mat-icon matSuffix>alternate_email</mat-icon>
             </mat-form-field>
             <mat-form-field fxFlex=50%>
                 <mat-label>Téléphone</mat-label>
-                <input matInput formControlName="contact_phone" type="tel" required>
+                <input matInput formControlName="contactPhone" type="tel" required>
                 <mat-icon matSuffix>call</mat-icon>
             </mat-form-field>
         </div>
@@ -74,5 +77,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end" *ngIf="!uploadingImg">
     <button mat-button (click)="onDismiss()">Annuler</button>
-    <button mat-button (click)="onSend()" [disabled]="!eventForm.valid" color="primary">Ajouter</button>
-</mat-dialog-actions>
+    <button mat-button (click)="onSend()" [disabled]="!eventForm.valid" color="primary">{{buttonSend}}</button>
+  </mat-dialog-actions>
