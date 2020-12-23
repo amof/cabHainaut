@@ -2,10 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { NewsService } from '../../share/services/news.service';
-import { News } from '../../share/models/news';
 import { ConfirmDialogComponent, ConfirmDialogModel } from '../../share/components/confirm-dialog/confirm-dialog.component';
 import { NewsDialogComponent } from './news-dialog/news-dialog.component';
+import { EventDialogComponent } from './event-dialog/event-dialog.component';
+
+import { NewsService } from '../../share/services/news.service';
+import { News } from '../../share/models/news';
+import { AgendaService } from 'src/app/share/services/agenda.service';
+import { Event } from '../../share/models/event';
 
 
 @Component({
@@ -16,13 +20,17 @@ import { NewsDialogComponent } from './news-dialog/news-dialog.component';
 export class AdminComponent implements OnInit {
 
   news: News[];
+  displayedColumnsNews: string[] = ['date', 'title', 'actions'];
+  dataSourceNews = new MatTableDataSource<News>();
 
-  displayedColumns: string[] = ['date', 'title', 'actions'];
-  dataSource = new MatTableDataSource<News>();
+  events: Event[];
+  displayedColumnsEvents: string[] = ['date', 'title', 'actions'];
+  dataSourceEvents = new MatTableDataSource<Event>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private newsService: NewsService,
+              private agendaService: AgendaService,
               public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -38,10 +46,16 @@ export class AdminComponent implements OnInit {
       {
         console.log(news);
         this.news = news;
-        this.dataSource = new MatTableDataSource<News>(this.news);
-        this.dataSource.paginator = this.paginator;
+        this.dataSourceNews = new MatTableDataSource<News>(this.news);
+        this.dataSourceNews.paginator = this.paginator;
       }
+    });
 
+    this.agendaService.getEvents().subscribe(events => {
+        console.log(events);
+        this.events = events;
+        this.dataSourceEvents = new MatTableDataSource<Event>(this.events);
+        this.dataSourceEvents.paginator = this.paginator;
     });
   }
 
@@ -86,6 +100,20 @@ export class AdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult === true) {
         this.newsService.deleteNews(news._id);
+      }
+    });
+  }
+
+  addNewEvent(): void {
+    const dialogRef = this.dialog.open(EventDialogComponent, {
+      height: '95%',
+      width: '100%',
+      data: {} as Event
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this.agendaService.postEvent(dialogResult as Event);
       }
     });
   }

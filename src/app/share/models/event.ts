@@ -1,14 +1,17 @@
 export interface Event {
   _id: string;
-  description: string;
-  img: string;
-  price: string;
-  register: string;
+  user_id: string;
+  createdAt: any;
+  updatedAt: any;
+  event_date_start: string;
+  event_date_end: string;
+
   title: string;
-  when: string;
-  where: string;
-  which: string;
-  register_mail: string;
-  register_phone: string;
-  date: Date;
+  description: string;
+  img: any;
+  event_location: string;
+  register: string;
+
+  contact_mail: string;
+  contact_phone: string;
 }

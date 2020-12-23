@@ -2,7 +2,7 @@
 <button mat-raised-button color="primary" (click)="addNews()">Ajouter nouvelle news</button>
 <div class="container">
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
+        <table mat-table [dataSource]="dataSourceNews">
       
           <!-- Date Column -->
           <ng-container matColumnDef="date">
@@ -25,8 +25,43 @@
               </td>
           </ng-container>
       
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsNews"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsNews;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>
+
+<h1>Gestion des évènements</h1>
+<button mat-raised-button color="primary" (click)="addNewEvent()">Ajouter nouvel évènement</button>
+<div class="container">
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSourceEvents">
+      
+          <!-- Date Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Creation Date </th>
+            <td mat-cell *matCellDef="let element"> </td> <!-- {{element.event_date_start.toDate() | date:'dd/MM/yy hh:mm:ss'}} -->
+          </ng-container>
+      
+          <!-- Titre Column -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Titre </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let element" fxLayoutGap="1rem">
+                <button mat-raised-button color="primary" (click)="editEvent(element)">Editer</button>
+                <button mat-raised-button color="primary" (click)="deleteEvent(element)">Supprimer</button>
+              </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsEvents"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsEvents;"></tr>
         </table>
       
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

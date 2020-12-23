@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 // Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -39,12 +40,22 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 // Carousel
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 // Leaflet
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
+// DateTime-Picker
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 // My components
 import { HomeComponent } from './core/home/home.component';
@@ -58,6 +69,7 @@ import { AdminComponent } from './core/admin/admin.component';
 import { LoginComponent } from './core/login/login.component';
 import { ConfirmDialogComponent } from './share/components/confirm-dialog/confirm-dialog.component';
 import { NewsDialogComponent } from './core/admin/news-dialog/news-dialog.component';
+import { EventDialogComponent } from './core/admin/event-dialog/event-dialog.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +85,7 @@ import { NewsDialogComponent } from './core/admin/news-dialog/news-dialog.compon
     LoginComponent,
     ConfirmDialogComponent,
     NewsDialogComponent,
+    EventDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,6 +118,13 @@ import { NewsDialogComponent } from './core/admin/news-dialog/news-dialog.compon
     MatPaginatorModule,
     MatTableModule,
     AngularFireAuthModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
+    MatProgressBarModule,
+    MatDatepickerModule,
+    AngularFireStorageModule,
+    NgxMatFileInputModule,
     QuillModule.forRoot({
       customOptions: [{
         import: 'formats/font',
