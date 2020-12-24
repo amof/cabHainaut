@@ -1,6 +1,7 @@
 h1 {
   font-size: 1.3rem;
   padding-bottom: 0.5rem;
+  margin-left: 0.3rem;
 }
 h2 {
   font-size: 1rem;
@@ -10,10 +11,20 @@ p {
   margin: 0.2rem;
 }
 
+.mat-card-image:first-child {
+  margin: 0;
+}
+
 .mat-card {
   margin: 0.3rem;
+
   .mat-card-avatar {
     height: 0;
     width: 0;
   }
+}
+
+.headerPrez {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
