@@ -20,7 +20,7 @@ export class MainNavComponent {
 
   isLoggedIn$: Observable<boolean>;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe('(max-width: 600px)')
     .pipe(
       map(result => result.matches),
       shareReplay()
