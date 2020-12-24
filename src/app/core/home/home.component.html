@@ -32,7 +32,7 @@
           <img mat-card-image *ngIf="nextEvent.imgUrl" src="{{nextEvent.imgUrl}}" alt="Image">
           <mat-card-content *ngIf="!nextEvent.imgUrl">
             <p>
-              {{nextEvent.description}}
+              <quill-view [content]="nextEvent.description" format="html" theme="snow"></quill-view>
             </p>
           </mat-card-content>
         </mat-card>
