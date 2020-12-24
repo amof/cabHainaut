@@ -65,7 +65,8 @@ export class AgendaService {
               eventLocation: event.eventLocation,
               register: event.register,
               contactMail: event.contactMail,
-              contactPhone: event.contactPhone
+              contactPhone: event.contactPhone,
+              contactPerson: event.contactPerson
           }, { merge: true });
     } else {
       return Promise.reject(new Error('No User Logged In!'));

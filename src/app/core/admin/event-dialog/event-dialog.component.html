@@ -48,15 +48,20 @@
             </mat-form-field>
         </div>
         <div fxLayoutGap=1rem>
-            <mat-form-field fxFlex=50%>
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="contactMail" type="email" required>
-                <mat-icon matSuffix>alternate_email</mat-icon>
+          <mat-form-field fxFlex=50%>
+            <mat-label>Personne de contact</mat-label>
+              <input matInput formControlName="contactPerson" type="text" required>
+              <mat-icon matSuffix>person</mat-icon>
             </mat-form-field>
             <mat-form-field fxFlex=50%>
-                <mat-label>Téléphone</mat-label>
-                <input matInput formControlName="contactPhone" type="tel" required>
-                <mat-icon matSuffix>call</mat-icon>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="contactMail" type="email" required>
+              <mat-icon matSuffix>alternate_email</mat-icon>
+            </mat-form-field>
+            <mat-form-field fxFlex=50%>
+              <mat-label>Téléphone</mat-label>
+              <input matInput formControlName="contactPhone" type="tel" required>
+              <mat-icon matSuffix>call</mat-icon>
             </mat-form-field>
         </div>
         <div>

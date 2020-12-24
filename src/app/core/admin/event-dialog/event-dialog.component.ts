@@ -61,6 +61,7 @@ export class EventDialogComponent implements OnInit {
       description: [this.eventReceived.description, Validators.required],
       contactMail: [this.eventReceived.contactMail, Validators.required],
       contactPhone: [this.eventReceived.contactPhone, Validators.required],
+      contactPerson: [this.eventReceived.contactPerson, Validators.required],
       register: [this.eventReceived.register],
       eventDateStart: [eventDateStartValue, Validators.required],
       eventDateEnd: [eventDateEndValue, Validators.required],

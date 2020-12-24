@@ -14,4 +14,5 @@ export interface Event {
 
   contactMail: string;
   contactPhone: string;
+  contactPerson: string;
 }
