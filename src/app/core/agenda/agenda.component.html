@@ -1,18 +1,31 @@
+<h1 fxLayoutAlign="center center"> Prochains évènements </h1>
+
 <div class="container">
-  <div *ngIf="events">
-    <mat-card *ngFor="let event of events" [routerLink]="['/agenda', event._id]">
-      <mat-card-header>
-        <mat-card-title>{{event.title}}</mat-card-title>
-        <mat-card-subtitle>{{event.when}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="{{event.img}}" alt="stage">
-      <mat-card-content>
-        <p>
-          {{event.description}}
-        </p>
-      </mat-card-content>
-    </mat-card>
- 
+  <div *ngIf="events" fxLayout="column">
+    <div fxLayout="row" *ngFor="let event of events" fxLayoutAlign="center center">
+      <div fxFlex=80% fxFlex.lt-sm=100% fxFlex.gt-lg=70%>
+        <mat-card  [routerLink]="['/agenda', event._id]">
+          <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>{{event.title}} ({{event.eventDateStart.toDate() | date:'dd/MM/yy'}}&nbsp;au&nbsp;{{event.eventDateEnd.toDate() | date:'dd/MM/yy'}})</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content fxLayoutAlign="column" fxLayoutAlign.gt-lg="row" fxLayoutAlign="center center" fxLayoutGap="1rem">
+            <div fxFlex.lt-sm=100% fxFlex=50% *ngIf="event.imgUrl" fxLayoutAlign="center">
+                <img mat-card-image src="{{event.imgUrl}}" alt="stage">
+            </div>
+            <p fxFlex=50% *ngIf="event.imgUrl" fxHide.lt-md="true" fxLayoutAlign="center">
+              <quill-view [content]="event.description" format="html" theme="snow"></quill-view>
+            </p>
+            <p fxFlex=100% *ngIf="!event.imgUrl">
+              <quill-view [content]="event.description" format="html" theme="snow"></quill-view>
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+
   </div>
   <div [hidden]="events || errMess">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
