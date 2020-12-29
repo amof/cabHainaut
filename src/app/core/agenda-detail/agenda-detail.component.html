@@ -1,54 +1,60 @@
+<h1 fxLayoutAlign="center center"> {{event.title}} </h1>
 <div class="container">
-  <div *ngIf="event">
+  <div *ngIf="event" >
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between" class='headerPrez'>
-      <div *ngIf="event.imgUrl" fxLayoutAlign="center center" fxFlex.gt-md="50%">
-        <img mat-card-image fxFlex=80% fxFlex.gt-md="70%"  src="{{event.imgUrl}}" alt="Agenda Image">
+      <div *ngIf="event.imgUrl" fxLayoutAlign="center center" fxFlex="50%">
+        <img mat-card-image fxFlex=80% fxFlex.gt-lg="70%" src="{{event.imgUrl}}" alt="Agenda Image">
       </div>
-      <div fxLayout="column" fxLayoutAlign="center" fxFlex.gt-md="50%">
-        <div fxFlex.gt-md="25%" fxLayoutAlign.lt-md="center center">
-          <h1> {{event.title}} </h1>
+      <div fxLayout="column" fxLayoutAlign="center" fxFlex="50%">
+        <div fxLayout.lt-sm="column" fxLayout="row">
+          <mat-card *ngIf="event.eventDateStart && event.eventDateEnd" fxFlex="50%">
+            <mat-card-header fxLayoutAlign="space-between" >
+              <mat-card-title>Quand ?</mat-card-title>
+              <mat-icon>calendar_today</mat-icon>
+            </mat-card-header>
+            <mat-card-content>
+              <p><i>{{event.eventDateStart.toDate() | date:'dd/MM/yy hh:mm'}}</i> au <i>{{event.eventDateEnd.toDate() | date:'dd/MM/yy hh:mm'}}</i></p>
+            </mat-card-content>
+          </mat-card>
+          <mat-card *ngIf="event.eventLocation" fxFlex="50%">
+            <mat-card-header fxLayoutAlign="space-between">
+              <mat-card-title>Où ?</mat-card-title>
+              <mat-icon>place</mat-icon>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{event.eventLocation}}</p>
+            </mat-card-content>
+          </mat-card>
         </div>
-        <mat-card *ngIf="event.eventLocation">
+        <mat-card *ngIf="event.description" fxFlex>
           <mat-card-header fxLayoutAlign="space-between">
-            <mat-card-title>Où ?</mat-card-title>
-            <mat-icon>place</mat-icon>
+            <mat-card-title>Description</mat-card-title>
+            <mat-icon>description</mat-icon>
           </mat-card-header>
+          <mat-divider></mat-divider>
           <mat-card-content>
-            <p>{{event.eventLocation}}</p>
-          </mat-card-content>
-        </mat-card>
-        <mat-card *ngIf="event.eventDateStart && event.eventDateEnd">
-          <mat-card-header fxLayoutAlign="space-between">
-            <mat-card-title>Quand ?</mat-card-title>
-            <mat-icon>calendar_today</mat-icon>
-          </mat-card-header>
-          <mat-card-content>
-            <p><i>{{event.eventDateStart.toDate() | date:'dd/MM/yy hh:mm'}}</i> au <i>{{event.eventDateEnd.toDate() | date:'dd/MM/yy hh:mm'}}</i></p>
+            <quill-view [content]="event.description" format="html" theme="snow"></quill-view>
           </mat-card-content>
         </mat-card>
       </div>
     </div>
-
-    <mat-card *ngIf="event.description">
-      <mat-card-header fxLayoutAlign="space-between">
-        <mat-card-title>Description</mat-card-title>
-        <mat-icon>description</mat-icon>
-      </mat-card-header>
-      <mat-card-content>
-        <quill-view [content]="event.description" format="html" theme="snow"></quill-view>
-      </mat-card-content>
-    </mat-card>
     <mat-card *ngIf="event.register">
       <mat-card-header fxLayoutAlign="space-between">
         <mat-card-title>Comment s'inscrire ?</mat-card-title>
         <mat-icon>how_to_reg</mat-icon>
       </mat-card-header>
+      <mat-divider></mat-divider>
       <mat-card-content fxLayout.lt-md="column" fxLayout="row">
-        <quill-view [content]="event.register" format="html" theme="snow" fxFlex.gt-md="70%"></quill-view>
-        <div fxLayout="column">
-          <p *ngIf="event.contactPerson" fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>person</mat-icon>Contacter :&nbsp;<b>{{event.contactPerson}}</b></p>
-          <p *ngIf="event.contactPhone" fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>call</mat-icon><a href="tel:{{event.contactPhone}}">{{event.contactPhone}}</a></p>
-          <p *ngIf="event.contactMail" fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>email</mat-icon><a href="mailto:{{event.contactMail}}">{{event.contactMail}}</a></p>
+        <div fxFlex=70%>
+          <quill-view [content]="event.register" format="html" theme="snow"></quill-view>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div fxFlex=30% fxLayout="column" fxLayoutAlign="center center">
+            <div>
+              <p *ngIf="event.contactPerson" fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>person</mat-icon>Contacter :&nbsp;<b>{{event.contactPerson}}</b></p>
+              <p *ngIf="event.contactPhone" fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>call</mat-icon><a href="tel:{{event.contactPhone}}">{{event.contactPhone}}</a></p>
+              <p *ngIf="event.contactMail" fxLayoutAlign="left center" fxLayoutGap="0.5rem"><mat-icon>email</mat-icon><a href="mailto:{{event.contactMail}}">{{event.contactMail}}</a></p>
+            </div>
         </div>
       </mat-card-content>
     </mat-card>
