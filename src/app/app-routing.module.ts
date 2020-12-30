@@ -10,6 +10,7 @@ import { AdminComponent } from './core/admin/admin.component';
 import { LoginComponent } from './core/login/login.component';
 
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { RocglaceComponent } from './core/rocglace/rocglace.component';
 
 const redirectLoggedInToAdmin = () => redirectLoggedInTo(['admin']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'agenda', component: AgendaComponent },
   { path: 'agenda/:id', component: AgendaDetailComponent },
   { path: 'photos', component: PhotosComponent },
+  { path: 'rocglace', component: RocglaceComponent },
   { path: 'team', component: TeamComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToAdmin } },

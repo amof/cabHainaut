@@ -70,6 +70,7 @@ import { LoginComponent } from './core/login/login.component';
 import { ConfirmDialogComponent } from './share/components/confirm-dialog/confirm-dialog.component';
 import { NewsDialogComponent } from './core/admin/news-dialog/news-dialog.component';
 import { EventDialogComponent } from './core/admin/event-dialog/event-dialog.component';
+import { RocglaceComponent } from './core/rocglace/rocglace.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { EventDialogComponent } from './core/admin/event-dialog/event-dialog.com
     ConfirmDialogComponent,
     NewsDialogComponent,
     EventDialogComponent,
+    RocglaceComponent,
   ],
   imports: [
     BrowserModule,

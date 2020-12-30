@@ -1,0 +1,29 @@
+<h1 fxLayoutAlign="center center"> Roc&Glace </h1>
+
+<div class="container">
+  <div *ngIf="magazines" fxLayout="column">
+    <div fxLayout="row" *ngFor="let magazinePerYear of magazines | keyvalue: keyDescOrder">
+      <h2>{{magazinePerYear.key}}</h2>
+      <div fxLayout="row" class="wrap">
+        <div *ngFor="let magazine of magazinePerYear.value" fxLayoutAlign.lt-md="center center" fxFlex.xs=100%>
+            <mat-card>
+                <mat-card-header fxLayoutAlign="center center">
+                  <mat-card-title>{{magazine.title}}</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card-content fxLayoutAlign="center">
+                    <a href="{{magazine.pdfUrl}}"><img mat-card-image src="{{magazine.coverUrl}}" alt="stage"></a>
+                </mat-card-content>
+              </mat-card>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="magazines || errMess">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
+</div>
