@@ -1,8 +1,36 @@
-.mat-list-base .mat-list-item .mat-line { 
-  white-space: pre-wrap;
+.mat-card-image:first-child {
+  margin: 0.5rem;
 }
 
-.mat-list-base .mat-list-item .mat-list-avatar {
-  height: 6rem;
+.mat-card-image {
   width: auto;
+  height: auto;
+}
+
+.mat-card {
+  margin: 0.5rem;
+}
+
+p {
+  margin: 0.1rem;
+}
+
+.paddingContent {
+  padding-top: 0.5rem;
+}
+
+h1 {
+  display:flex;
+  font-size: 1.5rem;
+  color:  #6b003f;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+@media(min-width: 600px) {
+  .comiteMember {
+    width: 30rem;
+  }
 }
