@@ -1,18 +1,27 @@
 <div class="container">
     <h1>Admin / Se connecter</h1>
-    <form novalidate [formGroup]="loginForm" #fform="ngForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput type="text" formControlName="email" required>
-            <mat-error *ngIf="formErrors.email"> {{formErrors.email}} </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password"  [type]="hidePassword ? 'password' : 'text'" required>
-            <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
-            <mat-error *ngIf="formErrors.password"> {{formErrors.password}} </mat-error>
-        </mat-form-field>
-        <button mat-flat-button [disabled]="loginForm.invalid" class="loginButton" color=primary type="submit">Login</button>
-        <mat-checkbox class="rememberCB" formControlName="rememberMe">Remember Me</mat-checkbox>
-    </form>
+    <div fxLayout="row" fxLayoutAlign="center">
+        <form novalidate [formGroup]="loginForm" #fform="ngForm" (ngSubmit)="onSubmit()" fxFlex.xs=100% fxFlex.sm=70% fxFlex.gt-sm=55%>
+            <p>
+                <mat-form-field appearance="outline" fxFlex=100%>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" formControlName="email" required>
+                    <mat-error *ngIf="formErrors.email"> {{formErrors.email}} </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" fxFlex=100%>
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput type="password" formControlName="password"  [type]="hidePassword ? 'password' : 'text'" required>
+                    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-error *ngIf="formErrors.password"> {{formErrors.password}} </mat-error>
+                </mat-form-field>
+            </p>
+            <div fxLayout="column" fxLayoutAlign="center center" >
+                <button mat-flat-button [disabled]="loginForm.invalid" class="loginButton" color=primary type="submit">Se connecter</button>
+                <mat-checkbox class="rememberCB" formControlName="rememberMe">Se souvenir de moi</mat-checkbox>
+            </div>
+        </form>
+    </div>
+
 </div>
